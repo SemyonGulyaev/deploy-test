@@ -9,11 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: shimataro/DEP@v2
-      # Setup key
-      - run: set -eu
-      - run: mkdir "$HOME/.ssh"
-      - run: echo "$" > "$HOME/.ssh/DEP"
-      - run: chmod 600 "$HOME/.ssh/DEP"  
-      # Deploy
-      - run: rsync -e "ssh -p 8822 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . orangepi@openaibot.ru:/home/orangepi/django_projects/deploy-test
+     - uses: shimataro/ssh-key-action@v2
+     - run: set -eu
+     - run: mkdir "$HOME/.ssh"
+     - run: echo "$" > "$HOME/.ssh/DEP"
+     - run: chmod 600 "$HOME/.ssh/DEP"
+     - run: rsync -e "ssh -p 8822 -i $HOME/.ssh/DEP -o StrictHostKeyChecking=no" --archive --compress --delete . orangepi@openaibot.ru:/home/orangepi/django_projects/deploy-test
