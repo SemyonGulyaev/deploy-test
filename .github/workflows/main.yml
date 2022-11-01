@@ -16,4 +16,4 @@ jobs:
       - run: echo "$" > "$HOME/.ssh/DEP"
       - run: chmod 600 "$HOME/.ssh/DEP"  
       # Deploy
-      - run: rsync -e "ssh -p 4322 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . orangepi@openaibot.ru:/home/orangepi/django_projects/deploy-test
+      - run: rsync -e "ssh -p 8822 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . orangepi@openaibot.ru:/home/orangepi/django_projects/deploy-test
