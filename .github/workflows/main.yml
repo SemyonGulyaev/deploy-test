@@ -17,3 +17,6 @@ jobs:
         with:
           key: ${{ secrets.DEP }}
           known_hosts: unnecessary
+          
+      - name: Deploy with rsync
+        run: rsync -e "ssh -p 8822 -i $HOME/.ssh/DEP -o StrictHostKeyChecking=no" --archive --compress --delete . orangepi@openaibot.ru:/home/orangepi/django_projects/deploy-test
